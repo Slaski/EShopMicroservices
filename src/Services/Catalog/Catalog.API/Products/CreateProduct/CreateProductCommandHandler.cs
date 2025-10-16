@@ -1,10 +1,10 @@
-﻿using MediatR;
+﻿using BuildingBlocks.CQRS;
 
 namespace Catalog.API.Products.CreateProduct;
 
-internal class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, CreateProductResult>
+internal class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
-    public Task<CreateProductResult> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+    public Task<CreateProductResult> HandleAsync(CreateProductCommand request, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
