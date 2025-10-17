@@ -1,4 +1,4 @@
 ﻿namespace BuildingBlocks.CQRS;
 
-public interface IQuery<out TResponse>
-    where TResponse : notnull { }
+public interface IQuery<out TResult>
+    where TResult : notnull { }

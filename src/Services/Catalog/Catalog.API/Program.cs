@@ -1,6 +1,14 @@
+using Catalog.API.Configurations;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddCarter();
+builder.Services.AddMediator();
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+// Configure the HTTP request pipeline
+app.MapCarter();
 
 app.Run();

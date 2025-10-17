@@ -1,8 +1,8 @@
 ﻿namespace BuildingBlocks.CQRS;
 
-public interface IQueryHandler<in TQuery, TResponse>
-    where TQuery : IQuery<TResponse>
-    where TResponse : notnull
+public interface IQueryHandler<in TQuery, TResult>
+    where TQuery : IQuery<TResult>
+    where TResult : notnull
 {
-    Task<TResponse> HandleAsync(TQuery query, CancellationToken cancellationToken = default);
+    Task<TResult> HandleAsync(TQuery query, CancellationToken cancellationToken = default);
 }

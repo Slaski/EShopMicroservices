@@ -3,9 +3,9 @@
 public interface ICommandHandler<in TCommand> : ICommandHandler<TCommand, Unit>
     where TCommand : ICommand { }
 
-public interface ICommandHandler<in TCommand, TResponse> 
-    where TCommand : ICommand<TResponse>
-    where TResponse : notnull
+public interface ICommandHandler<in TCommand, TResult> 
+    where TCommand : ICommand<TResult>
+    where TResult : notnull
 {
-    Task<TResponse> HandleAsync(TCommand command, CancellationToken cancellationToken = default);
+    Task<TResult> HandleAsync(TCommand command, CancellationToken cancellationToken = default);
 }

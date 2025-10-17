@@ -2,5 +2,5 @@
 
 public interface ICommand : ICommand<Unit> { }
 
-public interface ICommand<out TResponse>
-    where TResponse : notnull { }
+public interface ICommand<out TResult>
+    where TResult : notnull { }
