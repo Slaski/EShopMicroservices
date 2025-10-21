@@ -1,4 +1,7 @@
-﻿global using Carter;
+﻿global using BuildingBlocks.CQRS;
+global using Carter;
+global using Catalog.API.Exceptions;
+global using Catalog.API.Models;
 global using JasperFx;
 global using Mapster;
 global using Marten;

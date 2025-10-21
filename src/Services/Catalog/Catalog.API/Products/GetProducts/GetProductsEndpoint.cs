@@ -1,6 +1,4 @@
-﻿using BuildingBlocks.CQRS;
-
-namespace Catalog.API.Products.GetProducts;
+﻿namespace Catalog.API.Products.GetProducts;
 
 public class GetProductsEndpoint : ICarterModule
 {
