@@ -4,9 +4,9 @@ public class GetProductByCategoryEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products/category/{category:string}", async (string category, IMediator mediator) =>
+        app.MapGet("/products/category/{category}", async (string category, IMediator mediator) =>
         {
-            var result = mediator.SendQueryAsync<GetProductByCategoryQuery, GetProductByCategoryResult>(new GetProductByCategoryQuery(category));
+            var result = await mediator.SendQueryAsync<GetProductByCategoryQuery, GetProductByCategoryResult>(new GetProductByCategoryQuery(category));
             var response = result.Adapt<GetProductByCategoryResponse>();
 
             return Results.Ok(response);
