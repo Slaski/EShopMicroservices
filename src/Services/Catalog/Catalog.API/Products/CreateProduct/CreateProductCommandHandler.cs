@@ -1,16 +1,21 @@
-﻿namespace Catalog.API.Products.CreateProduct;
+﻿using JasperFx.Events.Daemon;
 
-internal class CreateProductCommandHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
+namespace Catalog.API.Products.CreateProduct;
+
+internal class CreateProductCommandHandler(IDocumentSession session, ILogger<CreateProductCommandHandler> logger) 
+    : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
-    public async Task<CreateProductResult> HandleAsync(CreateProductCommand request, CancellationToken cancellationToken)
+    public async Task<CreateProductResult> HandleAsync(CreateProductCommand command, CancellationToken cancellationToken)
     {
+        logger.LogInformation("CreateProductCommandHandler.Handle called with {@Command}", command);
+
         var product = new Product
         {
-            Name = request.Name,
-            Categories = request.Categories,
-            Description = request.Description,
-            ImageFile = request.ImageFile,
-            Price = request.Price
+            Name = command.Name,
+            Categories = command.Categories,
+            Description = command.Description,
+            ImageFile = command.ImageFile,
+            Price = command.Price
         };
 
         session.Store(product);
