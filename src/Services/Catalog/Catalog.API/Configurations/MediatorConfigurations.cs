@@ -9,6 +9,7 @@ namespace Catalog.API.Configurations
             services.AddSingleton<IMediator, Mediator>();
             services.AddCommands();
             services.AddQueries();
+            services.AddBehaviors();
         }
     }
 }
