@@ -10,6 +10,9 @@ builder.Services.AddMarten(options =>
 }).UseLightweightSessions();
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
+if (builder.Environment.IsDevelopment())
+    builder.Services.InitializeMartenWith<CatalogInitialData>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
