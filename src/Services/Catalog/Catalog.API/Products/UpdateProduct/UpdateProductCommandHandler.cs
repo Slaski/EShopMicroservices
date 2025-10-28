@@ -1,12 +1,10 @@
 ﻿namespace Catalog.API.Products.UpdateProduct;
 
-public class UpdateProductCommandHandler(IDocumentSession session, ILogger<UpdateProductCommandHandler> logger)
+public class UpdateProductCommandHandler(IDocumentSession session)
     : ICommandHandler<UpdateProductCommand, UpdateProductResult>
 {
     public async Task<UpdateProductResult> HandleAsync(UpdateProductCommand command, CancellationToken cancellationToken = default)
     {
-        logger.LogInformation("UpdateProductQueryHandler.Handle called with {@Command}", command);
-
         var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
 
         if (product is null)

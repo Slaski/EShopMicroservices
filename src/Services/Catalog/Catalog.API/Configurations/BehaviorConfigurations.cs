@@ -7,6 +7,7 @@ namespace Catalog.API.Configurations
         public static void AddBehaviors(this IServiceCollection services)
         {
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
         }
     }
 }
