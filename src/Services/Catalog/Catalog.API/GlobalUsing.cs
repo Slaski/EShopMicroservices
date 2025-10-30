@@ -9,3 +9,4 @@ global using FluentValidation;
 global using JasperFx;
 global using Mapster;
 global using Marten;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
