@@ -4,9 +4,10 @@ public class GetProductsEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products", async (IMediator mediator) =>
+        app.MapGet("/products", async ([AsParameters] GetProductsRequest request, IMediator mediator) =>
         {
-            var result = await mediator.SendQueryAsync<GetProductsQuery, GetProductsResult>(new GetProductsQuery());
+            var query = request.Adapt<GetProductsQuery>();
+            var result = await mediator.SendQueryAsync<GetProductsQuery, GetProductsResult>(query);
             var response = result.Adapt<GetProductsResponse>();
 
             return Results.Ok(response);
